@@ -78,3 +78,9 @@ body {
 .country__row {
   margin-bottom: 1rem;
 }
+
+.images img {
+  display: block;
+  width: 80rem;
+  margin: 4rem;
+}

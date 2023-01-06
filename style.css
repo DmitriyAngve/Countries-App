@@ -49,7 +49,7 @@ body {
   box-shadow: 0 1rem 2rem;
 }
 
-.btn-country:after {
+/* .btn-country:after {
   transform: scaleX(1.5) scaleY(1.5);
   opacity: 0;
 }
@@ -57,4 +57,4 @@ body {
 .btn-country:focus {
   outline: none;
   transform: translateY(-2rem);
-}
+} */

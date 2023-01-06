@@ -8,8 +8,11 @@ const renderCountry = function (data, className = '') {
   const name = data.name.common;
   const flag = data.flags.svg;
   const region = data.region;
-  const language = Object.values(data.language)[0];
-  const currency = Object.values(data.currency)[0].name;
+  const capital = data.capital;
+  const language = Object.values(data.languages)[0];
+  const currency = Object.values(data.currencies)[0].name;
+
+  console.log(data);
 
   const html = `
   <article class="country ${className}">
@@ -17,6 +20,7 @@ const renderCountry = function (data, className = '') {
     <div class="country__data">
         <h3 class="country__name">${name}</h3>
         <h4 class="country__region">${region}</h4>
+        <h4 class="country__row">${capital}</h4>
         <p class="country__row"><span>👨‍👦‍👦</span>${(
           +data.population / 1000000
         ).toFixed(1)}</p>
@@ -40,6 +44,7 @@ const getCountryData = function (country) {
     .then(data => {
       renderCountry(data[0]);
       const neighbour = data[0].borders;
+      console.log(neighbour);
       if (!neighbour) return;
       return neighbour.forEach(code => {
         fetch(`https://restcountries.com/v3.1/alpha?codes=${code}`)
@@ -56,5 +61,5 @@ const getCountryData = function (country) {
 };
 
 btn.addEventListener('click', function () {
-  getCountryData('USA');
+  getCountryData('russia');
 });

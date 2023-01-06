@@ -33,7 +33,7 @@ body {
   padding: 2rem 5rem;
   border-radius: 1rem;
   color: #fff;
-  background-image: linear-gradient(
+  background: linear-gradient(
     to left bottom,
     #a43da1,
     #9753bf,
@@ -41,20 +41,10 @@ body {
     #657ceb
   );
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s;
 }
 
 .btn-country:hover {
-  transform: translateY(-3.5px);
-  box-shadow: 0 1rem 2rem;
+  background: linear-gradient(to right top, #a43da1, #9753bf, #7f68db, #657ceb);
+  transform: scale(1.05);
 }
-
-/* .btn-country:after {
-  transform: scaleX(1.5) scaleY(1.5);
-  opacity: 0;
-}
-
-.btn-country:focus {
-  outline: none;
-  transform: translateY(-2rem);
-} */

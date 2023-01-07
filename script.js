@@ -7,25 +7,33 @@ const countriesContainer = document.querySelector('.countries');
 const renderCountry = function (data, className = '') {
   const name = data.name.common;
   const flag = data.flags.svg;
-  const region = data.region;
+  const region = data.subregion;
   const capital = data.capital;
   const language = Object.values(data.languages)[0];
   const currency = Object.values(data.currencies)[0].name;
 
   console.log(data);
 
+  // <p class="country__row"><span>👨‍👦‍👦</span>${
+  //   +data.population > 1000000
+  //     ? (+data.population / 1000000).toFixed(1)
+  //     : +data.population
+  // } people</p>
+
   const html = `
   <article class="country ${className}">
     <img class="country__img" src="${flag}" alt="Country" />
     <div class="country__data">
         <h3 class="country__name">${name}</h3>
-        <h4 class="country__region">${region}</h4>
-        <h4 class="country__row">${capital}</h4>
-        <p class="country__row"><span>👨‍👦‍👦</span>${(
-          +data.population / 1000000
-        ).toFixed(1)}</p>
-        <p class="country__row"><span>🗣️</span>${language}</p>
-        <p class="country__row"><span>💰</span>${currency}</p>
+        <h4 class="country__capital">${capital}</h4>
+        <h5 class="country__region">${region}</h5>
+        <p class="country__row"><span>👨‍👦‍👦</span>${
+          +data.population > 1000000
+            ? (+data.population / 1000000).toFixed(1)
+            : +data.population
+        } people</p>
+        <p class="country__row"><span> 🗣️</span>${language}</p>
+        <p class="country__row"><span> 💰</span>${currency}</p>
     </div>
   </article>
   `;
@@ -61,5 +69,5 @@ const getCountryData = function (country) {
 };
 
 btn.addEventListener('click', function () {
-  getCountryData('USA');
+  getCountryData('italy');
 });

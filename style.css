@@ -76,8 +76,13 @@ body {
   padding: 2.5rem 3.75rem 3rem 3.75rem;
 }
 
+.country__capital {
+  margin-bottom: 0.5rem;
+}
+
 .country__row {
   margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .images img {

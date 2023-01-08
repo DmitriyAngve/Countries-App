@@ -14,20 +14,6 @@ const renderCountry = function (data, className = '') {
 
   console.log(data);
 
-  // const population = function () {
-  //   if (+data.population > 1000000) {
-  //     return `${+data.population} people`;
-  //   } else {
-  //     `${(+data.population / 1000000).toFixed(1)} mln people`;
-  //   }
-  // };
-
-  // <p class="country__row"><span>👨‍👦‍👦</span>${
-  //   +data.population > 1000000
-  //     ? (+data.population / 1000000).toFixed(1)
-  //     : +data.population
-  // } people</p>
-
   const html = `
   <article class="country ${className}">
     <img class="country__img" src="${flag}" alt="Country" />

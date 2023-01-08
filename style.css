@@ -40,8 +40,8 @@ body {
   font-size: 2rem;
   /* opacity: 0; */
   transition: opacity 1s;
-  gap: 1.5rem;
-  padding: 1.5rem;
+  gap: 0.5rem;
+  padding: 0.5rem;
 }
 
 .btn-country {
@@ -99,4 +99,22 @@ body {
   display: block;
   width: 80rem;
   margin: 4rem;
+}
+
+.neighbour {
+  transform: scale(0.85) translateY(1rem);
+  margin-left: 0;
+}
+
+.neighbour::before {
+  content: 'Neighbour country';
+  width: 100%;
+  position: absolute;
+  top: -4rem;
+
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #888;
 }

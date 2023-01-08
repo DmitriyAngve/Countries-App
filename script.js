@@ -11,6 +11,8 @@ const renderCountry = function (data, className = '') {
   const capital = data.capital;
   const language = Object.values(data.languages)[0];
   const currency = Object.values(data.currencies)[0].name;
+  const side = data.borders;
+  console.log(side);
 
   console.log(data);
 
@@ -30,6 +32,9 @@ const renderCountry = function (data, className = '') {
         <p class="country__row"><span> 🗣️</span>${language}</p>
         <p class="country__row"><span> 💰</span>${currency}</p>
     </div>
+    <div class="list">
+    ${side}
+    <div>
   </article>
   `;
 
@@ -54,6 +59,12 @@ const getCountryData = function (country) {
         fetch(`https://restcountries.com/v3.1/alpha?codes=${code}`)
           .then(response => response.json())
           .then(data => renderCountry(data[0], 'neighbour'))
+          // trying
+          // .then(neighbour => {
+          //   data.borders.forEach(item => {
+          //     data.borders.push(item.name);
+          //   });
+          // })
           .catch(err => {
             console.error(`${err} 💥💥💥`);
             renderError(

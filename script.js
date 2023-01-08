@@ -49,6 +49,7 @@ const renderCountry = function (data, className = '') {
 
   countriesContainer.insertAdjacentHTML('beforeend', html);
   countriesContainer.style.opacity = 1;
+  btn.style.opacity = 0;
 };
 
 const renderError = function (msg) {

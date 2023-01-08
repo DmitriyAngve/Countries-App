@@ -21,17 +21,27 @@ body {
   justify-content: center;
 }
 
-.container {
-  display: flex;
+/* .container {
+  display: grid;
   flex-flow: column;
   align-items: center;
-}
+} */
+/* 
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+} */
 
 .countries {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   font-size: 2rem;
   /* opacity: 0; */
   transition: opacity 1s;
+  gap: 1.5rem;
+  padding: 1.5rem;
 }
 
 .btn-country {

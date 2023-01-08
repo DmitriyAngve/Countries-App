@@ -38,8 +38,8 @@ const renderCountry = function (data, className = '') {
         <p class="country__row"><span>👨‍👦‍👦</span>
         ${
           +data.population > 1000000
-            ? `${(+data.population / 1000000).toFixed(1)} mln people`
-            : `${+data.population} people`
+            ? `${(+data.population / 1000000).toFixed(1)}M people`
+            : `${(+data.population / 1000).toFixed(2)}K people`
         }</p>
         <p class="country__row"><span> 🗣️</span>${language}</p>
         <p class="country__row"><span> 💰</span>${currency}</p>
@@ -78,5 +78,5 @@ const getCountryData = function (country) {
 };
 
 btn.addEventListener('click', function () {
-  getCountryData('russia');
+  getCountryData('italy');
 });

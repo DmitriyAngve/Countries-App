@@ -4,6 +4,10 @@ const btn = document.querySelector('.btn-country');
 
 const countriesContainer = document.querySelector('.countries');
 
+// trying
+// let side =
+// let list = document.getElementById('myList');
+
 const renderCountry = function (data, className = '') {
   const name = data.name.common;
   const flag = data.flags.svg;
@@ -56,15 +60,12 @@ const getCountryData = function (country) {
       console.log(neighbour);
       if (!neighbour) return;
       return neighbour.forEach(code => {
-        fetch(`https://restcountries.com/v3.1/alpha?codes=${code}`)
+        console.log(code);
+        fetch(
+          `https://restcountries.com/v3.1/alpha?codes=${code},${code},${code}`
+        )
           .then(response => response.json())
           .then(data => renderCountry(data[0], 'neighbour'))
-          // trying
-          // .then(neighbour => {
-          //   data.borders.forEach(item => {
-          //     data.borders.push(item.name);
-          //   });
-          // })
           .catch(err => {
             console.error(`${err} 💥💥💥`);
             renderError(
@@ -75,6 +76,23 @@ const getCountryData = function (country) {
     });
 };
 
+// const getCountryData = function(country) {
+// fetch(`https://restcountries.com/v3.1/name/${country}`)
+// .then(response => response.json())
+// .then(data => {
+//   renderCountry(data[0]);
+//   const neighbour = data[0].borders;
+//   if(!neighbour) return;
+//   return neighbour.forEach(code => {
+//     console.log(code);
+//     fetch(`https://restcountries.com/v3.1/alpha?codes={code},{code},{code}`)
+//     .then(response => response.json())
+//     .then(data => renderCountry(data[0], "neighbour"))
+
+//   })
+// })
+// }
+
 btn.addEventListener('click', function () {
-  getCountryData('italy');
+  getCountryData('USA');
 });

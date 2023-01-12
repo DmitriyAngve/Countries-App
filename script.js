@@ -4,15 +4,15 @@ const btn = document.querySelector('.btn-country');
 
 const countriesContainer = document.querySelector('.countries');
 
-const listContainer = function (data) {
-  const list = document.getElementById('list');
+// const listContainer = function (data) {
+//   const list = document.getElementById('list');
 
-  data.forEach(item => {
-    let li = document.createElement('li');
-    li.innerText = item;
-    list.appendChild(li);
-  });
-};
+//   data.forEach(item => {
+//     let li = document.createElement('li');
+//     li.innerText = item;
+//     list.appendChild(li);
+//   });
+// };
 
 const renderCountry = function (data, className = '') {
   const name = data.name.common;
@@ -21,7 +21,7 @@ const renderCountry = function (data, className = '') {
   const capital = data.capital;
   const language = Object.values(data.languages)[0];
   const currency = Object.values(data.currencies)[0].name;
-  const side = data.borders;
+  // const side = data.borders;
 
   console.log(data);
 
@@ -40,10 +40,8 @@ const renderCountry = function (data, className = '') {
         }</p>
         <p class="country__row"><span> 🗣️</span>${language}</p>
         <p class="country__row"><span> 💰</span>${currency}</p>
+        <ul></ul>
     </div>
-    <ul class="list">
-  ${side}
-    </ul>
   </article>
   `;
 
@@ -52,16 +50,31 @@ const renderCountry = function (data, className = '') {
   btn.style.opacity = 0;
 };
 
-const renderError = function (msg) {
-  countriesContainer.insertAdjacentText('beforeend', msg);
-};
+// const renderError = function (msg) {
+//   countriesContainer.insertAdjacentText('beforeend', msg);
+// };
 
 const getCountryData = function (country) {
   fetch(`https://restcountries.com/v3.1/name/${country}`)
     .then(response => response.json())
     .then(data => renderCountry(data[0]));
 };
-getCountryData('italy'); // We get object "Response" for read data from the body we need to call json method on the response
+getCountryData('italy');
+
+const listOfCountries = function (country) {
+  fetch(`https://restcountries.com/v3.1/name/${country}`)
+    .then(res => {
+      return res.json();
+    })
+    .then(data => {
+      data.forEach(data => {
+        console.log(data);
+        const neighbour = `<li>${data.borders}</li>`;
+        document.querySelector('ul').insertAdjacentHTML('beforeend', neighbour);
+      });
+    });
+};
+listOfCountries('italy');
 
 // const getCountryData = function (country) {
 //   fetch(`https://restcountries.com/v3.1/name/${country}`)
@@ -123,6 +136,6 @@ getCountryData('italy'); // We get object "Response" for read data from the body
 //     });
 // };
 
-btn.addEventListener('click', function () {
-  getCountryData('USA');
-});
+// btn.addEventListener('click', function () {
+//   getCountryData('USA');
+// });

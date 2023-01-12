@@ -40,9 +40,9 @@ const renderCountry = function (data, className = '') {
         }</p>
         <p class="country__row"><span> 🗣️</span>${language}</p>
         <p class="country__row"><span> 💰</span>${currency}</p>
-        <ul></ul>
-    </div>
-  </article>
+      </div>
+      </article>
+      <ul class="list"></ul>
   `;
 
   countriesContainer.insertAdjacentHTML('beforeend', html);
@@ -54,27 +54,62 @@ const renderCountry = function (data, className = '') {
 //   countriesContainer.insertAdjacentText('beforeend', msg);
 // };
 
+const listOfCountries2 = function (data) {
+  console.log(data);
+  const side = data.borders;
+  for (let i = 0; i < side.length; i++) {
+    const neighbour2 = `<li class="list__side">${side[i]}</li>`;
+    document.querySelector('ul').insertAdjacentHTML('beforeend', neighbour2);
+  }
+};
+
+// // Variant 1 (working)
+// const getCountryData = function (country) {
+//   fetch(`https://restcountries.com/v3.1/name/${country}`)
+//     .then(response => response.json())
+//     .then(data => renderCountry(data[0]));
+//   // .then(data => listOfCountries2(data));
+// };
+// getCountryData('russia');
+
+// const listOfCountries = function (country) {
+//   fetch(`https://restcountries.com/v3.1/name/${country}`)
+//     .then(res => {
+//       return res.json();
+//     })
+//     .then(data => {
+//       data.forEach(data => {
+//         console.log(data.borders);
+//         let side = data.borders;
+//         for (let i = 0; i < side.length; i++) {
+//           const neighbour = `<li class="list__side">${side[i]}</li>`;
+//           document
+//             .querySelector('ul')
+//             .insertAdjacentHTML('beforeend', neighbour);
+//         }
+//       });
+//     });
+// };
+// listOfCountries('russia');
+
+// Variant 2 (try to accumalate 2 functions in one)
+
 const getCountryData = function (country) {
   fetch(`https://restcountries.com/v3.1/name/${country}`)
-    .then(response => response.json())
-    .then(data => renderCountry(data[0]));
-};
-getCountryData('italy');
-
-const listOfCountries = function (country) {
-  fetch(`https://restcountries.com/v3.1/name/${country}`)
-    .then(res => {
-      return res.json();
-    })
+    .then(res => res.json())
     .then(data => {
-      data.forEach(data => {
-        console.log(data);
-        const neighbour = `<li>${data.borders}</li>`;
-        document.querySelector('ul').insertAdjacentHTML('beforeend', neighbour);
+      renderCountry(data[0]);
+      const list = data[0].borders;
+      if (!list) return;
+      return list.forEach(code => {
+        fetch(`https://restcountries.com/v3.1/alpha?codes=${code}`)
+          .then(res => res.json())
+          .then(data => listOfCountries2(data[0], 'list'));
       });
     });
 };
-listOfCountries('italy');
+getCountryData('russia');
+// const countryListOfSides = function () {};
 
 // const getCountryData = function (country) {
 //   fetch(`https://restcountries.com/v3.1/name/${country}`)

@@ -73,8 +73,7 @@ const listOfCountries = function (country) {
         console.log(data.borders);
         let side = data.borders;
         for (let i = 0; i < side.length; i++) {
-          const neighbour = `<li>
-          <a href="http://en.wikipedia.org" class="list__side">${side[i]}</a></li>`;
+          const neighbour = `<li class="list__xyz"><a href="#" class="list__side">${side[i]}</a></li>`;
           document
             .querySelector('ul')
             .insertAdjacentHTML('beforeend', neighbour);

@@ -127,10 +127,14 @@ body {
 }
 
 .list__side {
-  list-style: none;
   text-decoration: none;
   margin: 1rem;
   transition: all 0.5s;
+  color: #556;
+}
+
+.list__xyz {
+  list-style: none;
 }
 
 .list__side:hover {

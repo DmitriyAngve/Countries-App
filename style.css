@@ -128,10 +128,14 @@ body {
 
 .list__side {
   list-style: none;
-  /* display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  grid-gap: 2rem;
-  align-items: center; */
-
+  text-decoration: none;
   margin: 1rem;
+  transition: all 0.5s;
+}
+
+.list__side:hover {
+  font-size: 5rem;
+  cursor: pointer;
+  background-color: rgba(#fff, 0.05);
+  transform: translateY(-3px);
 }

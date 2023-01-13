@@ -94,11 +94,15 @@ listOfCountries(countryName);
 //   });
 // }
 
-let listElement = document.createElement('list');
+let listElement = document.createElement('list__element');
 listElement.classList.add('.list__element');
 
 document.body.appendChild(listElement);
 console.log(listElement);
+
+// listElement.addEventListener('click', function () {
+//   console.log('lol');
+// });
 
 btn.addEventListener('click', function () {
   getCountryData(countryName);

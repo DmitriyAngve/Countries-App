@@ -4,8 +4,6 @@ const btn = document.querySelector('.btn-country');
 
 const countriesContainer = document.querySelector('.countries');
 
-const listElement = document.querySelector('.list__side');
-
 // const listContainer = function (data) {
 //   const list = document.getElementById('list');
 
@@ -77,7 +75,7 @@ const listOfCountries = function (country) {
         console.log(data.borders);
         let side = data.borders;
         for (let i = 0; i < side.length; i++) {
-          const neighbour = `<li class="list__xyz"><a href="#" class="list__side">${side[i]}</a></li>`;
+          const neighbour = `<li class="list__element"><a href="#" class="list__side">${side[i]}</a></li>`;
           document
             .querySelector('ul')
             .insertAdjacentHTML('beforeend', neighbour);
@@ -87,8 +85,23 @@ const listOfCountries = function (country) {
 };
 listOfCountries(countryName);
 
+// let listElement = document.querySelector('.list__side');
+// console.log(listElement);
+
+// for (let i = 0; i < listElement.length; i++) {
+//   listElement[i].addEventListener('click', function (e) {
+//     console.log(e.target.innerHTML);
+//   });
+// }
+
+let listElement = document.createElement('list');
+listElement.classList.add('.list__element');
+
+document.body.appendChild(listElement);
+console.log(listElement);
+
 btn.addEventListener('click', function () {
-  getCountryData('USA');
+  getCountryData(countryName);
 });
 
 // Variant 2 (try to accumalate 2 functions in one)

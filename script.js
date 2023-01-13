@@ -4,6 +4,8 @@ const btn = document.querySelector('.btn-country');
 
 const countriesContainer = document.querySelector('.countries');
 
+const listElement = document.querySelector('.list__side');
+
 // const listContainer = function (data) {
 //   const list = document.getElementById('list');
 
@@ -48,20 +50,22 @@ const renderCountry = function (data, className = '') {
   countriesContainer.insertAdjacentHTML('beforeend', html);
   countriesContainer.style.opacity = 1;
   btn.style.opacity = 0;
+  btn.style.cursor = 'default';
 };
 
-// const renderError = function (msg) {
-//   countriesContainer.insertAdjacentText('beforeend', msg);
-// };
+const renderError = function (msg) {
+  countriesContainer.insertAdjacentText('beforeend', msg);
+};
 
-// // Variant 1 (working)
+const countryName = 'USA';
+
+// Variant 1 (working)
 const getCountryData = function (country) {
   fetch(`https://restcountries.com/v3.1/name/${country}`)
     .then(response => response.json())
     .then(data => renderCountry(data[0]));
-  // .then(data => listOfCountries2(data));
 };
-getCountryData('USA');
+getCountryData(countryName);
 
 const listOfCountries = function (country) {
   fetch(`https://restcountries.com/v3.1/name/${country}`)
@@ -81,7 +85,11 @@ const listOfCountries = function (country) {
       });
     });
 };
-listOfCountries('USA');
+listOfCountries(countryName);
+
+btn.addEventListener('click', function () {
+  getCountryData('USA');
+});
 
 // Variant 2 (try to accumalate 2 functions in one)
 // const listOfCountries = function (data) {
@@ -158,13 +166,6 @@ listOfCountries('USA');
 //         fetch(`https://restcountries.com/v3.1/alpha?codes=${code}`)
 //           .then(response => response.json())
 //           .then(data => renderCountry(data[0], 'neighbour'))
-//           // trying
-//           // return neighbour.forEach(code => {
-//           //   console.log(code);
-//           //   fetch(`https://restcountries.com/v3.1/alpha?codes=${code}`)
-//           //     .then(response => response.json())
-//           //     .then(data => listContainer(data[0], 'list'))
-//           // TRYING
 //           .catch(err => {
 //             console.error(`${err} 💥💥💥`);
 //             renderError(
@@ -175,6 +176,6 @@ listOfCountries('USA');
 //     });
 // };
 
-// btn.addEventListener('click', function () {
-//   getCountryData('USA');
-// });
+btn.addEventListener('click', function () {
+  getCountryData('USA');
+});
